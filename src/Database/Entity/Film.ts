@@ -1,5 +1,6 @@
-import {BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Producer} from "./Producer";
+import {Premiere} from "./Premiere";
 
 @Entity("films")
 export class Film extends BaseEntity{
@@ -28,4 +29,7 @@ export class Film extends BaseEntity{
 
     @ManyToOne(() => Producer, p => p.films)
     producer: Producer;
+
+    @OneToMany(() => Premiere, p => p.film)
+    premieres: Premiere[]
 }
