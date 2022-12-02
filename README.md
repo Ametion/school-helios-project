@@ -5,6 +5,6 @@ that project created for database learning lessons with my classmates (@myros220
 
 TECHNOLOGIES WHAT I USE:
 
-express js
-typescript
+express js\
+typescript\
 ORM system (typeorm)
