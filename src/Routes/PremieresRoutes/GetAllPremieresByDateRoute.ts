@@ -13,6 +13,7 @@ router.get("/premieres/:date", async (req, res) => {
         }
 
         res.status(200).send(await new PremieresService().GetAllPremieresByDate(date))
+        return
     }catch{
         res.status(400).send("something went wrong")
     }
