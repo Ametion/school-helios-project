@@ -1,6 +1,6 @@
-import {CinemaWorker} from "../Database/Entity/CinemaWorker";
 import {CinemaWorkerRepo} from "../Database/DBRepos";
-import {CinemaWorkerModel} from "../Models/CinemaWorkerModel";
+import {CinemaWorker} from "../Database/Entity";
+import {CinemaWorkerModel} from "../Models";
 
 export class CinemaWorkersService{
     public async GetCinemaWorker(workerId: number): Promise<CinemaWorker | never>{

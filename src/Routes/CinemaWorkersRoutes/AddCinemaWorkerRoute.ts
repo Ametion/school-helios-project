@@ -13,8 +13,10 @@ router.post("/cinemaWorker", async (req, res) => {
         }
 
         res.status(201).send(await new CinemaWorkersService().AddCinemaWorker(firstName, secondName))
+        return
     }catch{
         res.status(400).send("something went wrong")
+        return
     }
 })
 

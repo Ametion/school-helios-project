@@ -16,6 +16,7 @@ router.post("/hall", async (req, res) => {
         return
     }catch{
         res.status(400).send("something went wrong")
+        return
     }
 })
 
