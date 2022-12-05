@@ -7,6 +7,8 @@ import {addCinemaWorkerRoute} from "./Routes/CinemaWorkersRoutes/AddCinemaWorker
 import {getAllPremieresByDateRoute} from "./Routes/PremieresRoutes/GetAllPremieresByDateRoute";
 import {getAllFilmsRouter} from "./Routes/FilmsRoutes/GetAllFilmsRoutes";
 import {addFilmRoute} from "./Routes/FilmsRoutes/AddFilmRoute";
+import {getAllProducersRoute} from "./Routes/ProducersRoutes/GetAllProducersRoute";
+import {addProducerRoute} from "./Routes/ProducersRoutes/AddProducerRoute";
 require("dotenv").config()
 
 const app = express()
@@ -24,6 +26,8 @@ app.listen(process.env.PORT, () => {
         app.use(getAllPremieresByDateRoute)
         app.use(getAllFilmsRouter)
         app.use(addFilmRoute)
+        app.use(getAllProducersRoute)
+        app.use(addProducerRoute)
     }).catch((e) => {
         console.log(e)
     })
