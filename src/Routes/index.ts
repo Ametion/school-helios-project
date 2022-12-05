@@ -1,0 +1,6 @@
+export * from "./CinemaWorkersRoutes"
+export * from "./HallsRoutes"
+export * from "./FilmsRoutes"
+export * from "./PremieresRoutes"
+export * from "./ProducersRoutes"
+export * from "./CustomersRoutes"

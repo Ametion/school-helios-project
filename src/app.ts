@@ -1,14 +1,12 @@
 import express from "express"
 import {dbConnection} from "./Database/DatabaseConnection";
-import {getHallsRouter} from "./Routes/HallsRoutes/GetAllHallsRoute";
-import {addHallRouter} from "./Routes/HallsRoutes/AddHallRoute";
-import {getAllCinemaWorkersRoute} from "./Routes/CinemaWorkersRoutes/GetAllCinemaWorkersRoute";
-import {addCinemaWorkerRoute} from "./Routes/CinemaWorkersRoutes/AddCinemaWorkerRoute";
-import {getAllPremieresByDateRoute} from "./Routes/PremieresRoutes/GetAllPremieresByDateRoute";
-import {getAllFilmsRouter} from "./Routes/FilmsRoutes/GetAllFilmsRoutes";
-import {addFilmRoute} from "./Routes/FilmsRoutes/AddFilmRoute";
-import {getAllProducersRoute} from "./Routes/ProducersRoutes/GetAllProducersRoute";
-import {addProducerRoute} from "./Routes/ProducersRoutes/AddProducerRoute";
+import {
+    addCinemaWorkerRoute, addFilmRoute,
+    addHallRouter, addProducerRoute,
+    getAllCinemaWorkersRoute, getAllFilmsRouter,
+    getAllPremieresByDateRoute, getAllProducersRoute,
+    getHallsRouter, loginCustomerRoute, registerCustomerRoute
+} from "./Routes";
 require("dotenv").config()
 
 const app = express()
@@ -28,6 +26,8 @@ app.listen(process.env.PORT, () => {
         app.use(addFilmRoute)
         app.use(getAllProducersRoute)
         app.use(addProducerRoute)
+        app.use(registerCustomerRoute)
+        app.use(loginCustomerRoute)
     }).catch((e) => {
         console.log(e)
     })

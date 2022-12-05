@@ -7,6 +7,17 @@ export class Customer extends BaseEntity{
     id: number;
 
     @Column({
+        nullable: false,
+        unique: true
+    })
+    login: string;
+
+    @Column({
+        nullable: false
+    })
+    password: string;
+
+    @Column({
         nullable: false
     })
     firstName: string;
