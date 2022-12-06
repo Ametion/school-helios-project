@@ -29,15 +29,16 @@ export class ProducersService{
         }
     }
 
-    public async AddProducer(firstName: string, secondName: string): Promise<boolean>{
+    public async AddProducer(firstName: string, secondName: string, image: string): Promise<boolean>{
         try{
-            if(!firstName || !secondName){
+            if(!firstName || !secondName || !image){
                 return false
             }
 
             const producer = ProducerRepo.create({
                 firstName: secondName,
-                secondName: secondName
+                secondName: secondName,
+                image: image
             })
 
             await producer.save()
