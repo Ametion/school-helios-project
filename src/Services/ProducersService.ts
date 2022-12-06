@@ -21,7 +21,7 @@ export class ProducersService{
 
             const producers = await ProducerRepo.find()
 
-            producers.forEach(p => arr.push(new ProducerModel(p.id, p.firstName, p.secondName)))
+            producers.forEach(p => arr.push(new ProducerModel(p.id, p.firstName, p.secondName, p.image)))
 
             return arr
         }catch{

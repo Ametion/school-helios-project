@@ -20,7 +20,7 @@ export class FilmsService{
                 }
             })
 
-            films.forEach(f => arr.push(new FilmModel(f.id, f.filmName, f.filmDescription, f.rate, f.date.toISOString(), new ProducerModel(f.producer.id, f.producer.firstName, f.producer.secondName))))
+            films.forEach(f => arr.push(new FilmModel(f.id, f.filmName, f.filmDescription, f.rate, f.date.toISOString(), f.image, new ProducerModel(f.producer.id, f.producer.firstName, f.producer.secondName, f.producer.image))))
 
             return arr
         }catch{
@@ -28,7 +28,7 @@ export class FilmsService{
         }
     }
 
-    public async AddFilm(filmName: string, filmDescription: string, filmRate: number, filmDate: Date, producerId: number): Promise<boolean>{
+    public async AddFilm(filmName: string, filmDescription: string, filmRate: number, filmDate: Date, image: string, producerId: number): Promise<boolean>{
         try{
             if(!filmName || !filmDescription || filmRate <= 0 || producerId <= 0){
                 return false
@@ -41,6 +41,7 @@ export class FilmsService{
                 filmDescription: filmDescription,
                 rate: filmRate,
                 date: filmDate,
+                image: image,
                 producer: producer
             })
 

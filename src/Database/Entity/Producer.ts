@@ -16,6 +16,11 @@ export class Producer extends BaseEntity{
     })
     secondName: string;
 
+    @Column({
+        nullable: false
+    })
+    image: string
+
     @OneToMany(() => Film, f => f.producer)
     films: Film[]
 }

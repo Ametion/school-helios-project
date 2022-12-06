@@ -27,6 +27,11 @@ export class Film extends BaseEntity{
     })
     date: Date
 
+    @Column({
+        nullable: false
+    })
+    image: string
+
     @ManyToOne(() => Producer, p => p.films)
     producer: Producer;
 

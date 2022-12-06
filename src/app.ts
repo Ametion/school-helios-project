@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express"
 import {dbConnection} from "./Database/DatabaseConnection";
 import {
@@ -9,9 +10,16 @@ import {
 } from "./Routes";
 require("dotenv").config()
 
+const corsConfig = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}
+
 const app = express()
 
 app.use(express.json())
+app.use(cors(corsConfig))
 
 app.listen(process.env.PORT, () => {
     dbConnection.initialize().then(() => {
