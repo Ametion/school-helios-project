@@ -1,5 +1,5 @@
 import express from "express";
-import {CustomerService} from "../../Services/CustomerService";
+import {CustomersService} from "../../Services/CustomersService";
 
 const router = express.Router()
 
@@ -12,7 +12,7 @@ router.post("/registerCustomer", async (req, res) => {
             return
         }
 
-        res.status(201).send(await new CustomerService().RegisterCustomer(firstName, secondName, parseInt(age), login, password))
+        res.status(201).send(await new CustomersService().RegisterCustomer(firstName, secondName, parseInt(age), login, password))
         return
     }catch{
         res.status(400).send("something went wrong")

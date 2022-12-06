@@ -2,7 +2,7 @@ import bcrypt from "bcrypt"
 import {CustomerRepo} from "../Database/DBRepos";
 import {Customer} from "../Database/Entity";
 
-export class CustomerService{
+export class CustomersService {
     public async RegisterCustomer(firstName: string, secondName: string, age: number, login: string, password: string): Promise<boolean>{
         try{
             if(!firstName || !secondName || age <= 0 || !login || !password){
@@ -52,6 +52,20 @@ export class CustomerService{
             return false
         }catch{
             return false
+        }
+    }
+
+    public async CustomerExist(customerId: number): Promise<boolean>{
+        try{
+            const customer = await CustomerRepo.findOneOrFail({
+                where: {
+                    id: customerId
+                }
+            })
+
+            return true
+        }catch(e: any){
+            throw new Error(e)
         }
     }
 

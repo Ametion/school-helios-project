@@ -8,7 +8,7 @@ export class Ticket extends BaseEntity{
     id: number;
 
     @ManyToOne(() => Customer, c => c.tickets)
-    owner: Customer;
+    customer: Customer;
 
     @ManyToOne(() => Premiere, p => p.tickets)
     premiere: Premiere

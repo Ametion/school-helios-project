@@ -32,6 +32,6 @@ export class Customer extends BaseEntity{
     })
     age: number
 
-    @OneToMany(() => Ticket, t => t.owner)
+    @OneToMany(() => Ticket, t => t.customer)
     tickets: Ticket[]
 }

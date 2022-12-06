@@ -33,4 +33,18 @@ export class PremieresService{
             return []
         }
     }
+
+    public async PremiereExist(premiereId: number): Promise<boolean | never>{
+        try{
+            const premiere = await PremieresRepo.findOneOrFail({
+                where: {
+                    id: premiereId
+                }
+            })
+
+            return true
+        }catch(e: any){
+            throw new Error(e.toString())
+        }
+    }
 }

@@ -1,5 +1,5 @@
 import express from "express";
-import {CustomerService} from "../../Services/CustomerService";
+import {CustomersService} from "../../Services/CustomersService";
 
 const router = express.Router()
 
@@ -12,7 +12,7 @@ router.patch("/loginCustomer", async (req, res) => {
             return
         }
 
-        res.status(200).send(await new CustomerService().LoginCustomer(login, password))
+        res.status(200).send(await new CustomersService().LoginCustomer(login, password))
     }catch{
         res.status(400).send("something went wrong")
         return

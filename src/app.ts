@@ -3,8 +3,8 @@ import express from "express"
 import {dbConnection} from "./Database/DatabaseConnection";
 import {
     addCinemaWorkerRoute, addFilmRoute,
-    addHallRouter, addProducerRoute,
-    getAllCinemaWorkersRoute, getAllFilmsRouter,
+    addHallRouter, addProducerRoute, buyTicketRouter,
+    getAllCinemaWorkersRoute, getAllCustomerTickets, getAllFilmsRouter,
     getAllPremieresByDateRoute, getAllProducersRoute,
     getHallsRouter, loginCustomerRoute, registerCustomerRoute
 } from "./Routes";
@@ -36,6 +36,8 @@ app.listen(process.env.PORT, () => {
         app.use(addProducerRoute)
         app.use(registerCustomerRoute)
         app.use(loginCustomerRoute)
+        app.use(buyTicketRouter)
+        app.use(getAllCustomerTickets)
     }).catch((e) => {
         console.log(e)
     })
