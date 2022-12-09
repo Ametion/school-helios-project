@@ -47,4 +47,28 @@ export class PremieresService{
             throw new Error(e.toString())
         }
     }
+
+    public async AddPremiere(premiereDate: string, filmId: number, hallId: number): Promise<boolean>{
+        try{
+            if(!premiereDate || filmId <= 0 || hallId <= 0){
+                return false
+            }
+
+            const premiere = PremieresRepo.create({
+                premiereDate: new Date(premiereDate),
+                film: {
+                    id: filmId
+                },
+                hall: {
+                    id: hallId
+                }
+            })
+
+            await premiere.save()
+
+            return true
+        }catch{
+            return false
+        }
+    }
 }
