@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt"
 import {CustomerRepo} from "../Database/DBRepos";
 import {Customer} from "../Database/Entity";
+import {LoginModel} from "../Models/LoginModel";
 
 export class CustomersService {
     public async RegisterCustomer(firstName: string, secondName: string, age: number, login: string, password: string): Promise<boolean>{
@@ -31,10 +32,10 @@ export class CustomersService {
         }
     }
 
-    public async LoginCustomer(login: string, password: string): Promise<boolean>{
+    public async LoginCustomer(login: string, password: string): Promise<LoginModel>{
         try{
             if(!login || !password){
-                return false
+                return new LoginModel(0, false)
             }
 
             const customer = await CustomerRepo.findOneOrFail({
@@ -45,13 +46,13 @@ export class CustomersService {
 
             if(customer){
                 if(bcrypt.compareSync(password, customer.password)){
-                    return true
+                    return new LoginModel(customer.id, true)
                 }
             }
 
-            return false
+            return new LoginModel(0, false)
         }catch{
-            return false
+            return new LoginModel(0, false)
         }
     }
 
