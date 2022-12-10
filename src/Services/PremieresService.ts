@@ -71,4 +71,31 @@ export class PremieresService{
             return false
         }
     }
+
+    public async GetPremiereById(premiereId: number): Promise<PremiereModel | never>{
+        try{
+            if(premiereId <= 0){
+                throw new Error("premiere id cant be lower than 0")
+            }
+
+            const premiere = await PremieresRepo.findOneOrFail({
+                where: {
+                    id: premiereId
+                },
+                relations: {
+                    film:{
+                        producer: true
+                    },
+                    hall: {
+                        hallWorker: true
+                    }
+                }
+            })
+
+            return new PremiereModel(premiere.id, premiere.premiereDate.toISOString(), new HallModel(premiere.hall.id, premiere.hall.hallName, premiere.hall.seatsAmount, new CinemaWorkerModel(premiere.hall.hallWorker.id, premiere.hall.hallWorker.firstName, premiere.hall.hallWorker.secondName)),
+                new FilmModel(premiere.film.id, premiere.film.filmName, premiere.film.filmDescription, premiere.film.rate, premiere.film.date.toISOString(), premiere.film.image, new ProducerModel(premiere.film.producer.id, premiere.film.producer.firstName, premiere.film.producer.secondName, premiere.film.producer.image)))
+        }catch{
+            throw new Error("something went wrong")
+        }
+    }
 }

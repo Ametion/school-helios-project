@@ -6,7 +6,7 @@ import {
     addHallRouter, addPremiereRoute, addProducerRoute, buyTicketRouter,
     getAllCinemaWorkersRoute, getAllCustomerTickets, getAllFilmsRouter,
     getAllPremieresByDateRoute, getAllProducersRoute,
-    getHallsRouter, loginCustomerRoute, registerCustomerRoute
+    getHallsRouter, getPremiereByIdRoute, loginCustomerRoute, registerCustomerRoute
 } from "./Routes";
 require("dotenv").config()
 
@@ -39,6 +39,7 @@ app.listen(process.env.PORT, () => {
         app.use(buyTicketRouter)
         app.use(getAllCustomerTickets)
         app.use(addPremiereRoute)
+        app.use(getPremiereByIdRoute)
     }).catch((e) => {
         console.log(e)
     })
