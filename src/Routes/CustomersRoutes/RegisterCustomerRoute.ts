@@ -7,12 +7,12 @@ router.post("/registerCustomer", async (req, res) => {
     try{
         const {firstName, secondName, age, login, password} = req.body
 
-        if(!firstName || !secondName || parseInt(age) <= 0 || !login || !password){
+        if(!firstName || !secondName || age <= 0 || !login || !password){
             res.status(204).send("dont enough parameters")
             return
         }
 
-        res.status(201).send(await new CustomersService().RegisterCustomer(firstName, secondName, parseInt(age), login, password))
+        res.status(201).send(await new CustomersService().RegisterCustomer(firstName, secondName, age, login, password))
         return
     }catch{
         res.status(400).send("something went wrong")
