@@ -8,7 +8,7 @@ export class CinemaBar extends BaseEntity{
     @Column({
         nullable: false
     })
-    item: string;
+    itemName: string;
 
     @Column({
         nullable: false

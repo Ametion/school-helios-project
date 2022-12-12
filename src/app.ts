@@ -2,8 +2,9 @@ import cors from "cors";
 import express from "express"
 import {dbConnection} from "./Database/DatabaseConnection";
 import {
+    addCinemaBarItemRoute,
     addCinemaWorkerRoute, addFilmRoute,
-    addHallRouter, addPremiereRoute, addProducerRoute, buyTicketRouter,
+    addHallRouter, addPremiereRoute, addProducerRoute, buyTicketRouter, getAllCinemaBarItemRoute,
     getAllCinemaWorkersRoute, getAllCustomerTickets, getAllFilmsRouter,
     getAllPremieresByDateRoute, getAllProducersRoute,
     getHallsRouter, getPremiereByIdRoute, loginCustomerRoute, registerCustomerRoute
@@ -40,6 +41,8 @@ app.listen(process.env.PORT, () => {
         app.use(getAllCustomerTickets)
         app.use(addPremiereRoute)
         app.use(getPremiereByIdRoute)
+        app.use(getAllCinemaBarItemRoute)
+        app.use(addCinemaBarItemRoute)
     }).catch((e) => {
         console.log(e)
     })
