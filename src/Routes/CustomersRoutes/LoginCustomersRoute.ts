@@ -3,7 +3,7 @@ import {CustomersService} from "../../Services/CustomersService";
 
 const router = express.Router()
 
-router.patch("/loginCustomer", async (req, res) => {
+router.post("/loginCustomer", async (req, res) => {
     try{
         const {login, password} = req.body
 
