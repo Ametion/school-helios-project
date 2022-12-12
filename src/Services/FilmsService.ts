@@ -52,4 +52,22 @@ export class FilmsService{
             return false
         }
     }
+
+    public async GetFilmById(filmId: number): Promise<FilmModel | never>{
+        try{
+            const film = await FilmRepo.findOneOrFail({
+                where: {
+                    id: filmId
+                },
+                relations: {
+                    producer: true
+                }
+            })
+
+            return new FilmModel(film.id, film.filmName, film.filmDescription, film.rate, film.date.toISOString(), film.image,
+                new ProducerModel(film.producer.id, film.producer.firstName, film.producer.secondName, film.producer.image))
+        }catch{
+            throw new Error("some error")
+        }
+    }
 }

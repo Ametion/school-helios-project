@@ -1,2 +1,3 @@
 export * from "./AddFilmRoute"
-export * from "./GetAllFilmsRoutes"
+export * from "./GetAllFilmsRoute"
+export * from "./GetFilmByIdRoute"

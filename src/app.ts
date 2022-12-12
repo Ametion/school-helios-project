@@ -6,7 +6,7 @@ import {
     addCinemaWorkerRoute, addFilmRoute,
     addHallRouter, addPremiereRoute, addProducerRoute, buyTicketRouter, getAllCinemaBarItemRoute,
     getAllCinemaWorkersRoute, getAllCustomerTickets, getAllFilmsRouter,
-    getAllPremieresByDateRoute, getAllProducersRoute,
+    getAllPremieresByDateRoute, getAllProducersRoute, getFilmByIdRoute,
     getHallsRouter, getPremiereByIdRoute, loginCustomerRoute, registerCustomerRoute
 } from "./Routes";
 require("dotenv").config()
@@ -43,6 +43,7 @@ app.listen(process.env.PORT, () => {
         app.use(getPremiereByIdRoute)
         app.use(getAllCinemaBarItemRoute)
         app.use(addCinemaBarItemRoute)
+        app.use(getFilmByIdRoute)
     }).catch((e) => {
         console.log(e)
     })
